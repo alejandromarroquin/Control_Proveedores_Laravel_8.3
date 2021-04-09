@@ -16,17 +16,46 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/simple-sidebar.css')}}" rel="stylesheet">
+
+    
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+    <div class="d-flex" id="wrapper">
+
+        @if (Auth::check())
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <a href="home" class="list-group-item-action bg-light">
+                    <div class="sidebar-heading">Central Proveedores</div>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <div class="list-group list-group-flush">
+                    <a href="loadfile" class="list-group-item list-group-item-action bg-light">Cargar archivo proveedores</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Proveedores</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Lista de proveedores</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+        @endif
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                
+                @if (Auth::check())
+                    <button class="btn btn-primary" id="menu-toggle">Ocultar Sidebar</button>
+                @endif
+                
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -59,8 +88,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -72,12 +101,28 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+    </body>
 </html>
