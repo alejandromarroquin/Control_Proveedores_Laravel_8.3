@@ -35,11 +35,7 @@
                 </a>
                 <div class="list-group list-group-flush">
                     <a href="loadfile" class="list-group-item list-group-item-action bg-light">Cargar archivo proveedores</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Proveedores</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Lista de proveedores</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->
