@@ -13,10 +13,10 @@ class CreateProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Provider', function (Blueprint $table) {
+        Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('idUser')->unsigned();
-            $table->foreign('idUser')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('rfc');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Provider');
+        Schema::dropIfExists('providers');
     }
 }

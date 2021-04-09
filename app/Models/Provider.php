@@ -9,7 +9,7 @@ class Provider extends Model
 {
     use HasFactory;
 
-    protected $table="Provider";
+    protected $table="providers";
 
     protected $fillable=[
         "idUser",
