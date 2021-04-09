@@ -39,4 +39,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/readcsv', [App\Http\Controllers\AdminController::class, 'readcsv']);
 
+Route::post('/createprovider',[App\Http\Controllers\UserController::class, 'store']);
+
+Route::get('/getproviders',[App\Http\Controllers\UserController::class, 'getProviders']);
+
 Route::view('loadfile', 'loadproviders');

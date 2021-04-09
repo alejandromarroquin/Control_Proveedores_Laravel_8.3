@@ -35,7 +35,7 @@
                 </a>
                 <div class="list-group list-group-flush">
                     <a href="loadfile" class="list-group-item list-group-item-action bg-light">Cargar archivo proveedores</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Lista de proveedores</a>
+                    <a href="getproviders" class="list-group-item list-group-item-action bg-light">Lista de proveedores</a>
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->

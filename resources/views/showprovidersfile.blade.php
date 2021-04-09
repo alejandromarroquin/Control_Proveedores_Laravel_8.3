@@ -25,12 +25,29 @@
                                         $numero = count($datos);
                                         $fila++;
                                         if($fila!=2){
+                                            echo "<form action='createprovider' method='POST'>";
+                            ?>@csrf<?php
                                             echo "<tr>";
                                             echo "<td>".($fila-2)."</td>";
                                             for ($c=0; $c < $numero; $c++) {
                                                 echo "<td>".$datos[$c]."</td>";
+                                                echo "<input type='hidden' name='providers' value='".$request->providers."'>";
+                                                if($c==0){
+                                                    echo "<input type='hidden' name='name' value='".$datos[$c]."'>";
+                                                }
+                                                if($c==1){
+                                                    echo "<input type='hidden' name='rfc' value='".$datos[$c]."'>";
+                                                }
+                                                if($c==2){
+                                                    echo "<input type='hidden' name='email' value='".$datos[$c]."'>";
+                                                }
                                             }
+                                            echo "<td>
+                                                <button type='submit' class='btn btn-primary'>
+                                                    Registrar
+                                                </button></td>";
                                             echo "</tr>";
+                                            echo "</form>";
                                         }
                                     }
                                     fclose($gestor);
