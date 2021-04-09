@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Provider;
 use Illuminate\Http\Request;
 
-class ProviderController extends Controller
+class AdminController extends Controller
 {
+
+    public function readcsv(){
+        $fila = 1;
+if (($gestor = fopen("test.csv", "r")) !== FALSE) {
+    while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+        $numero = count($datos);
+        echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
+        $fila++;
+        for ($c=0; $c < $numero; $c++) {
+            echo $datos[$c] . "<br />\n";
+        }
+    }
+    fclose($gestor);
+}
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,10 +56,10 @@ class ProviderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Provider $provider)
+    public function show($id)
     {
         //
     }
@@ -52,10 +67,10 @@ class ProviderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provider $provider)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +79,10 @@ class ProviderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provider $provider)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +90,10 @@ class ProviderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provider $provider)
+    public function destroy($id)
     {
         //
     }
